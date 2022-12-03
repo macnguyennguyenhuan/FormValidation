@@ -15,7 +15,7 @@
     <div class="login-card-container">
       <div class="login-card">
         <div class="login-card-logo">
-          <img type="text/img" src="logo.jpg" alt="logo" />
+          <img type="text/img" src="/img/logo.jpg" alt="logo" />
         </div>
         <!--Header of Sign up card-->
         <div class="login-card-header">
@@ -28,18 +28,35 @@
             <span class="form-item-icon material-symbols-rounded">person</span>
             <input
               id="fullname"
+              name="fullname"
               class="form-control"
               type="text"
               placeholder="Your Name"
-              
             />
+            <div class="form-message"></div>
+          </div>
+          <div class="form-item gender">   
+            <input
+            
+              value="male"
+              name="gender"
+              type="radio"
+              class="form-control"
+            />Male
+            <input
+              value="female"
+              name="gender"
+              type="radio"
+              class="form-control"
+            />Female
             <div class="form-message"></div>
           </div>
           <div class="form-item">
             <span class="form-item-icon material-symbols-rounded">mail</span>
             <input
               id="email"
-              class="email"
+              name="email"
+              class="form-control"
               type="text"
               placeholder="Enter Email"
             />
@@ -49,7 +66,8 @@
             <span class="form-item-icon material-symbols-rounded">lock</span>
             <input
               id="password"
-              class="password"
+              name="password"
+              class="form-control"
               type="password"
               placeholder="Enter Password"
             />
@@ -59,8 +77,9 @@
             <span class="form-item-icon material-symbols-rounded">lock</span>
             <input
               id="password_confirmation"
-              class="password_confirmation"
+              name="password_confirmation"
               type="password"
+              class="form-control"
               placeholder="Re-Enter Password"
             />
             <div class="form-message"></div>
@@ -115,22 +134,27 @@
         </div>
       </div>
     </div>
-    <script type="text/js" src="/js/script.js"></script>
+    <script src="js/script.js"></script>
     <script>
       Validator({
         form: "#form-1",
+        formGroupSelector: '.form-item',
         errorMessage: ".form-message",
         rules: [
             Validator.isRequired("#fullname",'Please input your full name'), 
             Validator.isRequired("#email"),
             Validator.isEmail("#email"),
+            Validator.isRequired('input[name="gender"]'),
             Validator.isRequired("#password"),
             Validator.minLength('#password',6),
             Validator.isRequired("#password_confirmation"),
             Validator.isConfirmed('#password_confirmation',function(){
                 return document.querySelector('#form-1 #password').value;
             })
-         ]
+         ],
+         onSubmit: function(data){
+            console.log(data)
+         }
       });
     </script>
   </body>

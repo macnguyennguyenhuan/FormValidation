@@ -1,4 +1,4 @@
-@import url("./css/reset.css");
+@import url("/css/reset.css");
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body{
@@ -63,6 +63,9 @@ body{
 }
 .login-card-form .form-item{
     position: relative;
+}
+.gender{
+    text-align: center;
 }
 .login-card-form .form-item .form-item-icon
 {
@@ -160,6 +163,7 @@ body{
     color:rgb(238, 93, 93);
 
 }
+
 /*Responsive*/
 @media(max-width: 768px){
     body{
